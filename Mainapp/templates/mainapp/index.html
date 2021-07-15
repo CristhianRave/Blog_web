@@ -1,0 +1,29 @@
+{% extends 'layouts\layout.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+<article class="content-main">
+    <div class="content-box">
+
+        <h1>Pagina de Inicio</h1>
+        {{Page.1}}
+
+        {% if messages %}
+        
+            {% for message in messages %}
+            
+                <div class="alert">
+                    {{message}}
+                </div>
+            
+            {% endfor %}
+        
+        {% endif %}
+
+    </div>
+</article>
+
+{% endblock %}

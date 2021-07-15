@@ -1,0 +1,37 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %}
+    {{blog.title}}
+{% endblock %}
+
+{% block content %}
+    {% include 'posts/for_categories.html' %}
+
+    <div Class="box-blog-individual">
+        <div class="content-box">
+            <h1 class="titles">{{blog.title}}</h1>   
+            <div class="date-individual">
+                <h3>Categoria : </h3>
+                    {% for category in blog.categories.all %}
+                        {{category}}
+
+                        <!-- Separador de categorias -->
+                        {% if forloop.counter < blog.categories.all|length %}
+                            {{'-'}}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if blog.image != 'null' and blog.image.url|length >= 1 %}
+                        <div>
+                            <img class="image-individual" src="{{blog.image.url}}" >
+                        </div>            
+                    {% endif %}
+                <h3>Creado por: </h3>{{blog.user}}
+                <h3>Creado el: </h3>{{blog.created_at}} 
+                    </div>     
+            <p class="titles">Contenido: </p>
+                {{blog.content|safe}}                    <!-- content ---- Usamos el safe para que el
+                                                          ckeditor se formatee bien en la web-->
+        </div>  
+    </div>
+{% endblock %}
