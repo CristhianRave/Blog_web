@@ -1,25 +1,21 @@
 {% extends 'layouts\layout.html' %}
 
-{% block title %}
-    {{title}}
-{% endblock %}
-
+{% block title %} {{title}} {% endblock %}
 {% block content %}
 <article class="content-main">
     <div class="content-box">
         <h1 class="titles">{{title}}</h1>
 
-        
+
         <form method="post" action="">
             <div class="errors">{{register_form.errors}}</div>
-            {% csrf_token %}
-            {% for g in register_form %}
+            {% csrf_token %} 
 
-                <p class="label">{{g.label}}</p>
-                {{g}}
-                
+            {% for g in register_form %}
+            <p class="label">{{g.label}}</p>
+            {{g}} 
             {% endfor %}
-            <input class="bottom-form" type="submit"  value="Registrarse">
+            <input class="bottom-form" type="submit" value="Registrarse">
         </form>
     </div>
 </article>

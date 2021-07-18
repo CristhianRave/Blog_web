@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,15 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="../../static/CSS/styles.css">
 </head>
+
 <body class="grid-container">
 
-<!-- ------------------------------------------------------------ -->
+    <!-- ------------------------------------------------------------ -->
 
     <header class="header">
         <nav class="nav">
-            <a href="/admin" class="logo nav-link">Logo</a>  <!-- Cambiar el enlace -->
+            <a href="/admin" class="logo nav-link">Logo</a>
+            <!-- Cambiar el enlace -->
 
             <ul class="nav-menu">
                 <li class="nav-menu-item">
@@ -21,52 +24,51 @@
                 </li>
                 <!-- Si estamos identificados -->
                 {% if user.id %}
-                
-                    <li class="nav-menu-item">
-                        <a href="{% url 'Blog' %}" class="nav-link">Blog</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="{% url 'Sobre_nosotros' %}" class="nav-link">Sobre Nosotros</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="{% url 'Logout' %}" class="nav-link">Logout</a>
-                    </li>
-                <!-- No estamos identificados -->    
+
+                <li class="nav-menu-item">
+                    <a href="{% url 'Blog' %}" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'Sobre_nosotros' %}" class="nav-link">Sobre Nosotros</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'Logout' %}" class="nav-link">Logout</a>
+                </li>
+                <!-- No estamos identificados -->
                 {% else %}
-                    <li class="nav-menu-item">
-                        <a href="{% url 'Registro' %}" class="nav-link">Registrarse</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="{% url 'Login' %}" class="nav-link">Login</a>
-                    </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'Registro' %}" class="nav-link">Registrarse</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'Login' %}" class="nav-link">Login</a>
+                </li>
                 {% endif %}
             </ul>
         </nav>
     </header>
-<!-- ------------------------------------------ -->
+    <!-- ------------------------------------------ -->
     <aside class="sidebar">
         {% if user.id is None %}
-        
-            <h1>No has iniciado sesion</h1>
+
+        <h1>No has iniciado sesion</h1>
         {% else %}
 
-            <h1>{{user}}</h1>
-            <h1>{{user.email}}</h1>
-            
+        <h1>{{user}}</h1>
+        <h1>{{user.email}}</h1>
+
         {% endif %}
     </aside>
-<!-- ------------------------------------------ -->
+    <!-- ------------------------------------------ -->
     <article class="main">
-        {% block content %}
-
-        {% endblock %}
+        {% block content %} {% endblock %}
     </article>
 
-    
-<!-- ------------------------------------------ -->
+
+    <!-- ------------------------------------------ -->
     <footer class="footer">
-        <p>Proyecto Blog con Django 2021   --    Cristhian Rave</p>
+        <p>Proyecto Blog con Django 2021 -- Cristhian Rave</p>
     </footer>
-<!-- ------------------------------------------ -->
-  </body>
-  </html>
+    <!-- ------------------------------------------ -->
+</body>
+
+</html>

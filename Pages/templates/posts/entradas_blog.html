@@ -1,16 +1,18 @@
 {% extends 'layouts\layout.html' %}
 
 
-{% block content %}    
+{% block content %}
 
-    {% include 'posts/for_categories.html' %}
+{% include 'posts/for_categories.html' %}
 
-    <article class="content-main-blog">
-        <div class="content-box">
+<article class="content-main-blog">
 
-            {% include 'posts/for_articles.html' %}
-        
-        </div>
-        {% include 'posts/pagination.html' %}
-    </article>
+    <div class="content-box">
+
+        {% include 'posts/for_articles.html' %}
+
+    </div>
+
+    {% include 'posts/pagination.html' %}
+</article>
 {% endblock %}

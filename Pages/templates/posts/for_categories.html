@@ -1,17 +1,20 @@
 <div class="categories">
+    <div class="category">
 
-    {% for c in categories %}
+        {% for c in categories %}
         <ul>
             <li>
                 <a href="{% url 'Category' c.0  %}" class="category-link">{{c.1}}</a>
             </li>
         </ul>
-    {% endfor %}
-    
-    <a href="{% url 'Blog' %}">
-        <h1 class="bottom-form">
-            <input type="button" value="Atras" >
-        </h1>
-    </a>
+        {% endfor %}
+    </div>
 
+    <div class="category">
+        <ul>
+            <li>
+                <a href="{% url 'Crear-articulo' %}">Crear articulo</a>
+            </li>
+        </ul>
+    </div>
 </div>

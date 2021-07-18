@@ -1,7 +1,7 @@
 {% extends 'layouts\layout.html' %}
 
 {% block title %}
-    {{title}}
+{{title}}
 {% endblock %}
 
 {% block content %}
@@ -9,6 +9,11 @@
     <div class="content-box">
 
         <h1>Pagina sobre nosotros</h1>
+        {% for f in user_in_use %}
+
+        <p>{{f.user}}</p>
+
+        {% endfor %}
 
     </div>
 </article>
