@@ -55,6 +55,7 @@ def category(request, category_id):
 @login_required(login_url='/login')
 def crear_articulo(request):
     user_id = request.POST.get('user')
+    image = request.FILES.get('imagen')
     # category = request.POST.get('categoria') pendiente arreglar
 
     if request.method == "POST":
@@ -66,12 +67,14 @@ def crear_articulo(request):
             user = user_id
             title = data_form['title']
             content = data_form['content']
+            image = image
             slug = f"{title}{user}"
 
             article = Page(
                 user_id=user,
                 title=title,
                 content=content,
+                image=image,
                 public=True,
                 slug=slug
             )
@@ -86,3 +89,28 @@ def crear_articulo(request):
     return render(request, 'posts/create_article.html', {
         "form": formulario,
     })
+
+
+def editar_article(request, slug):
+    article = Page.objects.get(slug=slug)
+
+    return render(request, 'posts/editar.html', {
+        "article": article,
+    })
+
+
+def editado(request, slug):
+   
+    article = Page.objects.get(slug=slug)
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    image = request.FILES.get('imagen')
+
+    if request.method == 'POST':
+        article.title = title
+        article.content = content
+        article.image = image
+
+        article.save()
+
+    return redirect ('../blog/'+ article.slug)

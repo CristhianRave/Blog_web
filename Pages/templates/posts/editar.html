@@ -1,0 +1,58 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %}
+{{article.title}}
+{% endblock %}
+
+{% block content %}
+{% include 'posts/for_categories.html' %}
+
+<div Class="box-blog-individual">
+    <form class="conten-box-article " method="post" action="{% url 'Editar' slug=article.slug%}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" id="user" name="user" value="{{user.id}}">
+
+        <textarea contenteditable="true" type="text" name="title" id="title">{{article.title}}</textarea>
+        <div class="date-individual">
+            <h3>Categoria : </h3>
+            {% for category in article.categories.all %}
+            {{category}}
+
+            {% endfor %}
+
+            <label for="categorias">Categorias:</label><br>
+            <select multiple name="categoria" id="categoria">
+                {% for c in categories %}
+
+                <option>{{c.1}}</option>
+                {% endfor %}
+            </select>
+
+            {% if article.image != 'null' and article.image.url|length >= 1 %}
+            <div>
+                <img class="image-individual" src="{{article.image.url}}">
+            </div>
+            {% endif %}
+            <br>
+            <label for="imagen">Introduce la imagen</label>
+            <input type="file" name="imagen" id="imagen">
+            <br>
+
+        </div>
+
+        <p class="titles">Contenido: </p>
+        <textarea contenteditable="true" name="content" id="content">{{article.content|safe}}</textarea>
+
+        <input class="bottom-form" type="submit" value="enviar">
+
+    </form>
+</div>
+<a href="{% url 'Blog_p' slug=article.slug %}">
+
+
+    <input class="bottom-form" type="submit" value="atras">
+
+</a>
+
+
+{% endblock %}

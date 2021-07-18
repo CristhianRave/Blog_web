@@ -23,7 +23,7 @@ class Page(models.Model):
     title = models.CharField(max_length=50, verbose_name='Titulo')
     content = RichTextField(verbose_name='Contenido')
     image = models.ImageField(
-        default='null', verbose_name='Imagen', upload_to="articles")
+        default='fondo.jpg', verbose_name='Imagen', upload_to="articles")
     slug = models.CharField(unique=True, max_length=150,
                             verbose_name='Url_Amigable')
     # Clave ajena de User, Con el uso de editable quitamos la opcion de elegir el usuario en los articulos

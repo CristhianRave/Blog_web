@@ -24,9 +24,14 @@
                 <div>
                     <img class="image-individual" src="{{blog.image.url}}">
                 </div>
+            {% else %}
+            <div class="div-image">
+                
+            </div>  
             {% endif %}
                 <h3>Creado por: </h3>{{blog.user}}
                 <h3>Creado el: </h3>{{blog.created_at}}
+                <h3>Actualizado el: </h3>{{blog.updated_at}}
         </div>
         <p class="titles">Contenido: </p>
         {{blog.content|safe}}
@@ -37,6 +42,11 @@
 <a href="{% url 'Blog' %}">
 
     <input type="button" class="bottom-form" value="Atras">
+
+</a>
+<a href="{% url 'Editar-articulo' slug=blog.slug %}">
+
+    <input type="button" class="bottom-form" value="Editar">
 
 </a>
 {% endblock %}

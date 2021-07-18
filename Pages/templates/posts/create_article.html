@@ -7,11 +7,11 @@
 
 <article class="content-main-blog">
 
-    <form action="{% url 'Crear-articulo' %}" method="post">
+    <form action="{% url 'Crear-articulo' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" id="user" name="user" value="{{user.id}}">
 
-        {{form.as_p}}
+        {{form.as_p}}</br>
 
         <p>
             <label for="categorias">Categorias:</label>
@@ -22,7 +22,10 @@
                 {% endfor %}
             </select>
         </p>
-
+        <br>
+        <label for="imagen">Imagen : </label>
+        <input type="file" name="imagen" id="imagen">
+        <br>
         <input type="submit" value="Guardar">
     </form>
     <a href="{% url 'Blog' %}">

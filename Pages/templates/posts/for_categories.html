@@ -1,13 +1,17 @@
 <div class="categories">
     <div class="category">
-
-        {% for c in categories %}
+        <h2>Categorias : </h2>
         <ul>
+            <li>
+                <a href="{% url 'Blog' %}" class="category-link">Todos</a>
+            </li>
+            
+            {% for c in categories %}
             <li>
                 <a href="{% url 'Category' c.0  %}" class="category-link">{{c.1}}</a>
             </li>
+            {% endfor %}
         </ul>
-        {% endfor %}
     </div>
 
     <div class="category">
