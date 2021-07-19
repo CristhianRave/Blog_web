@@ -3,7 +3,7 @@
 {% block content %}
 {% include 'posts/for_categories.html' %}
 
-<article class="content-main-blog">
+<div class="content-main-blog">
     <div class="content-box">
         <h1 class="h1-title">{{category.name}}</h1>
 
@@ -11,5 +11,5 @@
 
     </div>
     {% include 'posts/pagination.html' %}
-</article>
+</div>
 {% endblock %}

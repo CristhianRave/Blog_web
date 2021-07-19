@@ -1,11 +1,11 @@
-<div class="categories">
-    <div class="category">
+<div class="main-categories">
+    <div class="main-categories__category">
         <h2>Categorias : </h2>
         <ul>
             <li>
                 <a href="{% url 'Blog' %}" class="category-link">Todos</a>
             </li>
-            
+
             {% for c in categories %}
             <li>
                 <a href="{% url 'Category' c.0  %}" class="category-link">{{c.1}}</a>
@@ -17,8 +17,12 @@
     <div class="category">
         <ul>
             <li>
+
                 <a href="{% url 'Crear-articulo' %}">Crear articulo</a>
             </li>
         </ul>
     </div>
 </div>
+
+
+

@@ -5,14 +5,15 @@
 
 {% include 'posts/for_categories.html' %}
 
-<article class="content-main-blog">
+<div class="main-blog">
 
-    <div class="content-box">
+    <div class="main-blog__articles">
 
         {% include 'posts/for_articles.html' %}
 
     </div>
-
-    {% include 'posts/pagination.html' %}
-</article>
+    <div class="main-blog__pagination">
+        {% include 'posts/pagination.html' %}
+    </div>    
+</div>
 {% endblock %}

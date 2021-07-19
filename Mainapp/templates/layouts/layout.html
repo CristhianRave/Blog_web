@@ -15,32 +15,32 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="/admin" class="logo nav-link">Logo</a>
+            <a href="/admin" class="nav-li__link">Logo</a>
             <!-- Cambiar el enlace -->
 
             <ul class="nav-menu">
-                <li class="nav-menu-item">
-                    <a href="{% url 'Inicio' %}" class="nav-link">Inicio</a>
+                <li class="nav-li">
+                    <a href="{% url 'Inicio' %}" class="nav-li__link">Inicio</a>
                 </li>
                 <!-- Si estamos identificados -->
                 {% if user.id %}
 
-                <li class="nav-menu-item">
-                    <a href="{% url 'Blog' %}" class="nav-link">Blog</a>
+                <li class="nav-li">
+                    <a href="{% url 'Blog' %}" class="nav-li__link">Blog</a>
                 </li>
-                <li class="nav-menu-item">
-                    <a href="{% url 'Sobre_nosotros' %}" class="nav-link">Sobre Nosotros</a>
+                <li class="nav-li">
+                    <a href="{% url 'Sobre_nosotros' %}" class="nav-li__link">Sobre Nosotros</a>
                 </li>
-                <li class="nav-menu-item">
-                    <a href="{% url 'Logout' %}" class="nav-link">Logout</a>
+                <li class="nav-li">
+                    <a href="{% url 'Logout' %}" class="nav-li__link">Logout</a>
                 </li>
-                <!-- No estamos identificados -->
+                <!-- Si No estamos identificados -->
                 {% else %}
-                <li class="nav-menu-item">
-                    <a href="{% url 'Registro' %}" class="nav-link">Registrarse</a>
+                <li class="nav-li">
+                    <a href="{% url 'Registro' %}" class="nav-li__link">Registrarse</a>
                 </li>
-                <li class="nav-menu-item">
-                    <a href="{% url 'Login' %}" class="nav-link">Login</a>
+                <li class="nav-li">
+                    <a href="{% url 'Login' %}" class="nav-li__link">Login</a>
                 </li>
                 {% endif %}
             </ul>

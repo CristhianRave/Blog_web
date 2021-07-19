@@ -1,29 +1,26 @@
 {% for article in articles %}
 
-<a href="{% url 'Blog_p' slug=article.slug %}" Class="box-blog">
-    <h2 class="h1-blog"> {{article.title.upper}}</h2>
+<a href="{% url 'Blog_p' slug=article.slug %}" Class="article">
+    <h2 class="article-title"> {{article.title.upper}}</h2>
     
     <!-- No mostrar imagen por default cuando el articulo no la contiene -->
     
-
     {% if article.image != 'null' and article.image.url|length >= 1 %}
-    <div>
-        <img class="div-image" src="{{article.image.url}}">
+    <div class="article-box-image">
+        <img src="{{article.image.url}}">
     </div>
     {% else %}
-    <div class="div-image">
+    <div class="article-box-image">
         
     </div>
     {% endif %}
     <!-- ------------------------------------------------------------ -->
     
-    <div class="date">
+    <div class="article-date">
         <h3>Creado el: </h3>
-  
         {{article.created_at}}
         <h3>Creado por: </h3>
         {{article.user}}
     </div>
 </a>
-
 {% endfor %}
