@@ -5,7 +5,7 @@ from Pages.models import Page, Category
 
 
 def get_categories(request):
-
+    category = Category.objects.all()
     categories_use = Page.objects.filter(
         public=True).values_list('categories', flat=True)
 
@@ -14,6 +14,7 @@ def get_categories(request):
         'id', 'name')
 
     return {
+        'category': category,
         'categories': categories,
         'ids': categories_use,
     }

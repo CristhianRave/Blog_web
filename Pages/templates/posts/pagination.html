@@ -1,23 +1,26 @@
-{% if articles.has_previous %}
-<a href="?page=1">&laquo; Primer &raquo; </a>
-{% endif %}
-
-{% if articles.has_next %}
-<a href="?page={{ articles.paginator.num_pages }}">
-    &laquo; ultima &raquo;
-</a><br>
-{% endif %}
-
-{% if articles.has_previous %}
-<a href="?page={{ articles.previous_page_number }}">
-    &laquo; Anterior &raquo;
-</a>
-{% endif %}
-
-{% if articles.has_next %}
-<a href="?page={{ articles.next_page_number }}">
-    &laquo; Siguiente &raquo;
-</a><br>
-{% endif %}
-
-{{ articles.number}} de {{articles.paginator.num_pages}}
+<div>
+    
+    {% if articles.has_previous %}
+    <a href="?page=1">&laquo; Primer &raquo; </a>
+    {% endif %}
+    
+    {% if articles.has_next %}
+    <a href="?page={{ articles.paginator.num_pages }}">
+        &laquo; ultima &raquo;
+    </a><br>
+    {% endif %}
+    
+    {% if articles.has_previous %}
+    <a href="?page={{ articles.previous_page_number }}">
+        <
+    </a>
+    {% endif %}
+    
+    {{ articles.number}} de {{articles.paginator.num_pages}}
+    
+    {% if articles.has_next %}
+    <a href="?page={{ articles.next_page_number }}">
+        >
+    </a><br>
+    {% endif %}
+</div>

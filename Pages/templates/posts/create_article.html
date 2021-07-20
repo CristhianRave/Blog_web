@@ -2,36 +2,50 @@
 
 
 {% block content %}
+<div class="page-blog">
+    <div class="main-categories">
+        <div class="main-categories__category">
+            {% include 'posts/for_categories.html' %}
+        </div>
+        
+        <div class="create-article-menu">
+            <a href="{% url 'Blog' %}">
+                Atras
+            </a>
+        </div>
+    </div>
 
-{% include 'posts/for_categories.html' %}
+    <div class="create-article">
+        <form class="form" action="{% url 'Crear-articulo' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="user" name="user" value="{{user.id}}">
+            
+            <div class="form-title-content">
+                <div><h3>{{form.title.label}}</h3></div>
+                {{form.title}}
+                <div><h3>{{form.content.label}}</h3></div>
+                {{form.content}}
+            </div>
+            
+            <div Class="form-categories">
+                <label class="form-label" for="categorias"><h3>Categoria :</h3></label>
+                <select class="form-select" name="category">
+                    <option value=" {{category.2.id}}">----------------</option> <!-- Categoria por defecto "Otros" -->
+                    {% for c in category %}
+                    <option value="{{c.id}}" >{{c}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-<div class="content-main-blog">
+            <div class="form-image">
+                <label class="form-label" for="imagen"><h3>Imagen :</h3> </label>
+                <input type="file" name="imagen">
+            </div>
 
-    <form action="{% url 'Crear-articulo' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" id="user" name="user" value="{{user.id}}">
-
-        {{form.as_p}}</br>
-
-        <p>
-            <label for="categorias">Categorias:</label>
-            <select multiple name="categoria" id="categoria">
-                {% for c in categories %}
-
-                <option>{{c.1}}</option>
-                {% endfor %}
-            </select>
-        </p>
-        <br>
-        <label for="imagen">Imagen : </label>
-        <input type="file" name="imagen" id="imagen">
-        <br>
-        <input type="submit" value="Guardar">
-    </form>
-    <a href="{% url 'Blog' %}">
-
-        <input type="button" class="bottom-form" value="Atras">
-
-    </a>
+            <div class="form-submit">
+                <input class="form-input" type="submit" value="Guardar">
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

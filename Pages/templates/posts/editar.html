@@ -5,54 +5,58 @@
 {% endblock %}
 
 {% block content %}
-{% include 'posts/for_categories.html' %}
+<div class="page-blog">
+    <div class="main-categories">
+        <div class="main-categories__category">
+            {% include 'posts/for_categories.html' %}
+        </div>
 
-<div Class="box-blog-individual">
-    <form class="conten-box-article " method="post" action="{% url 'Editar' slug=article.slug%}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" id="user" name="user" value="{{user.id}}">
-
-        <textarea contenteditable="true" type="text" name="title" id="title">{{article.title}}</textarea>
-        <div class="date-individual">
-            <h3>Categoria : </h3>
-            {% for category in article.categories.all %}
-            {{category}}
-
-            {% endfor %}
-
-            <label for="categorias">Categorias:</label><br>
-            <select multiple name="categoria" id="categoria">
-                {% for c in categories %}
-
-                <option>{{c.1}}</option>
+        <div class="create-article-menu">
+            <a href="{% url 'Blog' %}">
+                Atras
+            </a>
+        </div>
+    </div>
+    <div class="article-individual">
+        <form class="date-individual" method="post" action="{% url 'Editar' slug=article.slug%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="user" name="user" value="{{user.id}}">
+            <div class="title-article-individual">
+                <textarea class="title-article-individual" contenteditable="true" type="text" name="title" id="title" maxlength="15">{{article.title}}</textarea>
+            </div>
+            <div class="date-individual-categories">
+                <h3 class="date-content-title">Categoria :</h3>
+                {% for category in article.categories.all %}
+                <p class="date-content">{{category}}</p>
                 {% endfor %}
-            </select>
+            </div>
+            <div Class="form-categories">
+                <label class="form-label" for="categorias"><h3>Categoria nueva:</h3></label>
+                <select class="form-select" name="category">
+                    <option value=" {{category.2.id}}">----------------</option> <!-- Categoria por defecto "Otros" -->
+                    {% for c in category %}
+                    <option value="{{c.id}}">{{c}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
             {% if article.image != 'null' and article.image.url|length >= 1 %}
-            <div>
+            <div class="box-image-individual">
                 <img class="image-individual" src="{{article.image.url}}">
             </div>
             {% endif %}
-            <br>
-            <label for="imagen">Introduce la imagen</label>
-            <input type="file" name="imagen" id="imagen">
-            <br>
-
-        </div>
-
-        <p class="titles">Contenido: </p>
-        <textarea contenteditable="true" name="content" id="content">{{article.content|safe}}</textarea>
-
-        <input class="bottom-form" type="submit" value="enviar">
-
-    </form>
+            <div class="form-image">
+                <label class="form-label" for="imagen"><h3>Cambiar imagen :</h3> </label>
+                <input type="file" name="imagen">
+            </div>
+            <div class="date-content-box-edita">
+                <h3 class="date-content-title">Contenido: </h3>
+                <textarea class="content-edita" contenteditable="true" name="content" >
+                    {{article.content|safe}}
+                </textarea>
+            </div>
+            <input class="botton-article-individual-edita" type="submit" value="enviar">
+        </form>
+    </div>
 </div>
-<a href="{% url 'Blog_p' slug=article.slug %}">
-
-
-    <input class="bottom-form" type="submit" value="atras">
-
-</a>
-
-
 {% endblock %}

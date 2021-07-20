@@ -2,6 +2,7 @@
 
 <a href="{% url 'Blog_p' slug=article.slug %}" Class="article">
     <h2 class="article-title"> {{article.title.upper}}</h2>
+
     
     <!-- No mostrar imagen por default cuando el articulo no la contiene -->
     
@@ -10,17 +11,20 @@
         <img src="{{article.image.url}}">
     </div>
     {% else %}
-    <div class="article-box-image">
+    <div class="article-box-image-none">
         
     </div>
     {% endif %}
     <!-- ------------------------------------------------------------ -->
     
     <div class="article-date">
-        <h3>Creado el: </h3>
+        <h4>Creado el: </h4>
         {{article.created_at}}
-        <h3>Creado por: </h3>
+        <h4>Creado por: </h4>
         {{article.user}}
     </div>
 </a>
+<!-- <a class="botton-article-individual" href="{% url 'Eliminar-articulo' id=article.id %}">
+    <div >Eliminar</div>
+</a> -->
 {% endfor %}

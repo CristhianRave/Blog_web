@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Pages.forms import FormArticles
-from django.contrib.auth.models import Group
+import random
 
 
 """ Recuperamos el slug (podria ser id en su lugar)
@@ -56,7 +56,12 @@ def category(request, category_id):
 def crear_articulo(request):
     user_id = request.POST.get('user')
     image = request.FILES.get('imagen')
-    # category = request.POST.get('categoria') pendiente arreglar
+    num_aleatory = random.randint(1,1000)
+    category = request.POST.get('category') 
+    if category is None:
+        cat = 3
+    else:
+        cat = category
 
     if request.method == "POST":
         formulario = FormArticles(request.POST)
@@ -67,8 +72,11 @@ def crear_articulo(request):
             user = user_id
             title = data_form['title']
             content = data_form['content']
-            image = image
-            slug = f"{title}{user}"
+            slug = f"{title}{num_aleatory}"
+            if image != None:
+                image = image
+            else:
+                image = 'articles/fondo_3.jpg'
 
             article = Page(
                 user_id=user,
@@ -78,11 +86,11 @@ def crear_articulo(request):
                 public=True,
                 slug=slug
             )
-
             article.save()
+            article.categories.add(cat) # Asignamos categoria al articulo
 
             return redirect('/blog')
-
+            
     else:
         formulario = FormArticles()
 
@@ -105,12 +113,22 @@ def editado(request, slug):
     title = request.POST.get('title')
     content = request.POST.get('content')
     image = request.FILES.get('imagen')
+    cat = request.POST.get('category')
 
     if request.method == 'POST':
         article.title = title
         article.content = content
-        article.image = image
+        if image != None:
+            article.image = image
 
         article.save()
-
+        article.categories.clear()
+        article.categories.add(cat) # Asignamos categoria al articulo
     return redirect ('../blog/'+ article.slug)
+
+
+def delete_article (request,id):
+
+    article = Page.objects.get(pk=id)
+    article.delete()
+    return redirect ('/blog')

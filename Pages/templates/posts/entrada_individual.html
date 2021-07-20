@@ -5,48 +5,75 @@
 {% endblock %}
 
 {% block content %}
-{% include 'posts/for_categories.html' %}
-
-<div Class="box-blog-individual">
-    <div class="conten-box-article ">
-        <h1 class="titles">{{blog.title}}</h1>
-        <div class="date-individual">
-            <h3>Categoria : </h3>
-            {% for category in blog.categories.all %}
-            {{category}}
-
-            <!-- Separador de categorias -->
-            {% if forloop.counter < blog.categories.all|length %} 
-            {{'-'}} 
-            {% endif %} 
-            {% endfor %} 
-            {% if blog.image != 'null' and blog.image.url|length >= 1 %}
-                <div>
-                    <img class="image-individual" src="{{blog.image.url}}">
-                </div>
-            {% else %}
-            <div class="div-image">
-                
-            </div>  
-            {% endif %}
-                <h3>Creado por: </h3>{{blog.user}}
-                <h3>Creado el: </h3>{{blog.created_at}}
-                <h3>Actualizado el: </h3>{{blog.updated_at}}
+<div class="page-blog">
+    <div class="main-categories">
+        <div class="main-categories__category">
+            {% include 'posts/for_categories.html' %}
         </div>
-        <p class="titles">Contenido: </p>
-        {{blog.content|safe}}
-        <!-- content ---- Usamos el safe para que el ckeditor se formatee bien en la web-->
+
+        <div class="create-article-menu">
+            <a href="{% url 'Blog' %}">
+                Atras
+            </a>
+        </div>
     </div>
 
+
+    <div class="article-individual">
+
+        <div class="date-individual">
+
+            <div class="title-article-individual">
+                <h1>{{blog.title}}</h1>
+            </div>
+
+            <div class="date-individual-categories">
+                <h3 class="date-content-title">Categoria :</h3>
+                {% for category in blog.categories.all %}
+                <p class="date-content">{{category}}</p>
+                <!-- Separador de categorias -->
+<!--                 {% if forloop.counter < blog.categories.all|length %} {{'-'}} 
+                {% endif %}  -->
+                {% endfor %} 
+            </div>
+
+            <div class="box-image-individual">
+                <img class="image-individual" src="{{blog.image.url}}">
+            </div>
+
+            <div class="box-date-info">
+                <div Class="date-info">
+                    <h3 class="date-content-title">Creado por: </h3>
+                    <p class="date-content">{{blog.user}}</p>
+                </div>
+                <div Class="date-info">
+                    <h3 class="date-content-title">Creado el: </h3>
+                    <p class="date-content">{{blog.created_at}}</p>
+                </div>
+                <div Class="date-info">
+                    <h3 class="date-content-title">Actualizado el: </h3>
+                    <p class="date-content">{{blog.updated_at}}</p>
+                </div>
+            </div>
+
+            <div class="date-content-box">
+                <h3 class="date-content-title">Contenido: </h3>
+                <p class="date-content">{{blog.content|safe}}</p>
+            </div>
+        </div>
+
+        <!-- content ---- Usamos el safe para que el ckeditor se formatee bien en la web-->
+        <div class="box-bottons-article">
+            <a class="botton-article-individual" href="{% url 'Blog' %}">
+                <div>Atras</div>
+            </a>
+            <a class="botton-article-individual" href="{% url 'Editar-articulo' slug=blog.slug %}">
+                <div>Editar</div>
+            </a>
+            <a class="botton-article-individual" href="{% url 'Eliminar-articulo' id=blog.id %}">
+                <div >Eliminar</div>
+            </a>
+        </div>
+    </div>
 </div>
-<a href="{% url 'Blog' %}">
-
-    <input type="button" class="bottom-form" value="Atras">
-
-</a>
-<a href="{% url 'Editar-articulo' slug=blog.slug %}">
-
-    <input type="button" class="bottom-form" value="Editar">
-
-</a>
 {% endblock %}
