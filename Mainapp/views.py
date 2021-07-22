@@ -15,12 +15,12 @@ def index(request):
     })
 
 
-@login_required(login_url='/login')
+""" @login_required(login_url='/login')
 def about_us(request):
 
     return render(request, 'mainapp/about_us.html', {
     })
-
+ """
 
 def register_page(request):
     if request.user.is_authenticated:

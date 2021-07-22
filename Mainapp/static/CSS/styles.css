@@ -139,12 +139,12 @@ ul {
 .nav-li__link {
     color: white;
     border-radius: 3px;
-    transition: 0.3s;
+    transition: 0.4s;
 }    
 
 .nav-li__link:hover {
-    transition: 0.3s;
-    font-size: 1.5em;
+    transition: 0.4s;
+    font-size: 1.1em;
 }    
 
 
@@ -323,7 +323,6 @@ ul {
 }
 
 .article-title {
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
     font-size: 1.5em;
     word-break: break-all;
     height: 3em;
@@ -477,14 +476,11 @@ ul {
 .main-blog__pagination {
     margin-top: 35px;
     height: 80px;
-    display: flex;
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
-    
+    display: flex;    
 }
+
 .main-blog__pagination > div{
-    margin: auto;
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
-    
+    margin: auto;   
 }
 
 /*-- ------------------------- Footer ------------------------ --*/

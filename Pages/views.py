@@ -23,7 +23,7 @@ def blog_p(request, slug):
 
 @login_required(login_url='/login')
 def blog(request):
-    categories = Category.objects.all()
+
     articles = Page.objects.all()
 
 # Montamos sistema de paginacion
@@ -56,8 +56,8 @@ def category(request, category_id):
 def crear_articulo(request):
     user_id = request.POST.get('user')
     image = request.FILES.get('imagen')
-    num_aleatory = random.randint(1,1000)
-    category = request.POST.get('category') 
+    num_aleatory = random.randint(1, 1000)
+    category = request.POST.get('category')
     if category is None:
         cat = 3
     else:
@@ -87,10 +87,10 @@ def crear_articulo(request):
                 slug=slug
             )
             article.save()
-            article.categories.add(cat) # Asignamos categoria al articulo
+            article.categories.add(cat)  # Asignamos categoria al articulo
 
             return redirect('/blog')
-            
+
     else:
         formulario = FormArticles()
 
@@ -98,7 +98,7 @@ def crear_articulo(request):
         "form": formulario,
     })
 
-
+@login_required(login_url='/login')
 def editar_article(request, slug):
     article = Page.objects.get(slug=slug)
 
@@ -106,9 +106,9 @@ def editar_article(request, slug):
         "article": article,
     })
 
-
+@login_required(login_url='/login')
 def editado(request, slug):
-   
+
     article = Page.objects.get(slug=slug)
     title = request.POST.get('title')
     content = request.POST.get('content')
@@ -122,13 +122,14 @@ def editado(request, slug):
             article.image = image
 
         article.save()
+
         article.categories.clear()
-        article.categories.add(cat) # Asignamos categoria al articulo
-    return redirect ('../blog/'+ article.slug)
+        article.categories.add(cat)  # Asignamos categoria al articulo
+    return redirect('../blog/' + article.slug)
 
-
-def delete_article (request,id):
+@login_required(login_url='/login')
+def delete_article(request, id):
 
     article = Page.objects.get(pk=id)
     article.delete()
-    return redirect ('/blog')
+    return redirect('/blog')
