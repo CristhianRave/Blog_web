@@ -27,58 +27,6 @@ ul {
 }
 
 
-
-/*-- ------------------------- ----- ------------------------ --*/
-
-
-
-
-
-
-
-.login {
-    margin: 60px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.login>.bottom-form {
-    margin: 0;
-    margin-top: 25px;
-}
-
-.alert {
-    margin-top: 20px;
-    width: 100%;
-    height: 50px;
-    background: darkolivegreen;
-    padding-top: inherit;
-}
-
-#id_username,
-#id_email,
-#id_first_name,
-#id_last_name,
-#id_password1,
-#id_password2 {
-    width: 30%;
-    margin-bottom: 20px;
-}
-
-
-
-
-/*-- -------------------------  ------------------------ --*/
-
-
-
-
-
-
-
-
 /*-- ------------------------- Grid - Header ------------------------ --*/
 
 
@@ -112,7 +60,10 @@ ul {
 .sidebar {
     grid-area: sidebar;
     background-color: gray;
-    margin: 30px 0px 30px 0px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }    
 
 
@@ -147,12 +98,101 @@ ul {
     font-size: 1.1em;
 }    
 
+/*-- ------------------------- Sidebar ------------------------ --*/
+
+.form-login {
+    display: flex;
+    width: 50%;
+    margin: 20px auto 20px auto;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.bottom-form {
+    width: 10%;
+}
+
+.alert {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    background: darkolivegreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-not_session {
+    margin-bottom: 30px;
+}
+
+
+/*-- ------------------------- Index ------------------------ --*/
+
+.content-index__title {
+    margin: 30px auto;
+}
+
+.content-index__p {
+    box-shadow: -1px 1px 7px 0px rgb(0 0 0 / 75%);
+    width: 70%;
+    text-align: justify;
+    margin: 30px auto;
+}
+
+
+/*-- ------------------------- Register ------------------------ --*/
+
+.content-register {
+    width: 40%;
+    margin: auto;
+}
+
+.form-register {
+    width: 100%;
+    margin: 30px auto;
+    box-shadow: -1px 1px 7px 0px rgb(0 0 0 / 75%);
+
+}
+.title-register {
+    margin: 20px 0px;
+}
+.box-form-register {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box-register {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#id_username,
+#id_email,
+#id_first_name,
+#id_last_name,
+#id_password1,
+#id_password2 {
+    width: 165%;
+    margin: 10px 0px;
+    height: 30px;
+}
+
+ul.errorlist {
+    text-align: start;
+    padding: 20px;
+}
 
 /*-- ------------------------- Blog ------------------------ --*/
 
 .page-blog {
     display:flex;
 }
+
 .main-blog {
     width: 80%;
     box-shadow: -1px 1px 7px 0px rgb(0 0 0 / 75%);
@@ -239,6 +279,7 @@ ul {
     flex-wrap:wrap;
     width: 50%;
 }
+
 
 .form-title-content,
 .form-categories,
@@ -431,7 +472,7 @@ ul {
 }
 
 .box-image-individual {
-    width: 90%;
+    width: 70%;
     align-self: center;
     box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
 }

@@ -2,22 +2,30 @@
 
 {% block title %} {{title}} {% endblock %}
 {% block content %}
-<article class="content-main">
-    <div class="content-box">
-        <h1 class="titles">{{title}}</h1>
 
-
-        <form method="post" action="">
-            <div class="errors">{{register_form.errors}}</div>
-            {% csrf_token %} 
-
-            {% for g in register_form %}
-            <p class="label">{{g.label}}</p>
-            {{g}} 
-            {% endfor %}
-            <input class="bottom-form" type="submit" value="Registrarse">
-        </form>
+<div class="content-register">
+    <div>
+        <h1 class="title-register">{{title}}</h1>
     </div>
-</article>
+
+    <form class="form-register" method="post" action="">
+        <div class="errors-register">
+            <div>
+                {{register_form.errors}}
+            </div>
+        </div>
+        {% csrf_token %}
+
+        <div Class="box-form-register">
+            {% for g in register_form %}
+            <div class="box-register">
+                <p class="form-label-register">{{g.label}}</p>
+                <div>{{g}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <input class="botton-article-individual-edita" type="submit" value="Registrarse">
+    </form>
+</div>
 
 {% endblock %}

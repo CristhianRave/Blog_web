@@ -14,14 +14,6 @@ def index(request):
         'title': 'Inicio'
     })
 
-
-""" @login_required(login_url='/login')
-def about_us(request):
-
-    return render(request, 'mainapp/about_us.html', {
-    })
- """
-
 def register_page(request):
     if request.user.is_authenticated:
         return redirect('/inicio')
@@ -34,7 +26,7 @@ def register_page(request):
             if register_form.is_valid():
                 register_form.save()
 
-                messages.success(request, 'Te has registrado Bien')
+                messages.success(request, 'Te has registrado!')
 
                 return redirect('/inicio')
 
@@ -56,17 +48,14 @@ def login_page(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('/inicio')
+                return redirect('/blog')
             else:
                 messages.warning(request, 'No Te has identificado')
-
-        return render(request, 'Mainapp/user/login.html', {
-            'title': 'Identificate'
-        })
+                return redirect('/inicio')
 
 
 def logout_user(request):
 
     logout(request)
 
-    return redirect('/login')
+    return redirect('Inicio')

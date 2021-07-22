@@ -1,31 +1,27 @@
-{% extends 'layouts\layout.html' %} 
 
-{% block title %} {{title}} {% endblock %} 
-{% block content %}
-<article class="content-main">
-    <div class="content-box">
-        <h1 class="titles">{{title}}</h1>
-        {% if messages %} 
-        {% for message in messages %}
-        <div class="alert">
-            {{message}}
+<div>
+    {% if user.id is None %}
+    
+    <h1 class="title-not_session">No has iniciado sesion</h1>
+    <form  class="form-login" method="post" action="{% url 'Login' %}">
+        {% csrf_token %}
+        
+        <div>
+            <label class="form-label" for="username">Usuario</label>
+            <input  type="text" name="username" placeholder="Nombre">
         </div>
-        {% endfor %} 
-        {% endif %}
-
-        <form class="login" method="post" action="">
-            {% csrf_token %}
-
-            <label class="label" for="username">Usuario</label>
-            <input type="text" name="username" placeholder="Nombre">
-
-            <label class="label" for="Password">Contraseña</label>
-            <input type="password" name="password" placeholder="password">
-
-            <input class="bottom-form" type="submit" value="Entrar">
-        </form>
-
-    </div>
-</article>
-
-{% endblock %}
+        <div>
+            <label  class="form-label" for="Password">Contraseña</label>
+            <input  type="password" name="password" placeholder="password">
+        </div>
+        
+        <input class="bottom-form" type="submit" value="Entrar">
+    </form>
+    
+    {% else %}
+    
+    <h1>{{user}}</h1>
+    <h1>{{user.email}}</h1>
+    
+    {% endif %}
+</div>

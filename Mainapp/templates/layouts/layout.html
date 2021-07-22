@@ -36,24 +36,13 @@
                 <li class="nav-li">
                     <a href="{% url 'Registro' %}" class="nav-li__link">Registrarse</a>
                 </li>
-                <li class="nav-li">
-                    <a href="{% url 'Login' %}" class="nav-li__link">Login</a>
-                </li>
                 {% endif %}
             </ul>
         </nav>
     </header>
     <!-- ------------------------------------------ -->
     <aside class="sidebar">
-        {% if user.id is None %}
-
-        <h1>No has iniciado sesion</h1>
-        {% else %}
-
-        <h1>{{user}}</h1>
-        <h1>{{user.email}}</h1>
-
-        {% endif %}
+        {% include 'mainapp/user/login.html' %}
     </aside>
     <!-- ------------------------------------------ -->
 

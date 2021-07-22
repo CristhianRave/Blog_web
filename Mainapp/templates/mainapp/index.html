@@ -5,24 +5,24 @@
 {% endblock %}
 
 {% block content %}
-<article class="content-main">
-    <div class="content-box">
 
-        <h1>Pagina de Inicio</h1>
-        {{Page.1}}
+<div Class="content-index">
 
-        {% if messages %}
+    {% if messages %}
 
-        {% for message in messages %}
+    {% for message in messages %}
 
-        <div class="alert">
-            {{message}}
-        </div>
+    <div class="alert">
+        {{message}}
+    </div>
 
-        {% endfor %}
+    {% endfor %}
 
-        {% endif %}
+    {% endif %}
+    <h1 Class="content-index__title">Pagina de Inicio</h1>
+    {{Page.1}}
 
+    <div class="content-index__p">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper justo condimentum lorem
             aliquam, nec fermentum sapien vestibulum. Quisque vulputate cursus urna, eu imperdiet justo. Curabitur a
@@ -33,7 +33,6 @@
             potenti. Maecenas aliquam consequat enim vel bibendum. Mauris eget ipsum arcu. Nunc pretium, turpis nec
             sollicitudin volutpat, dolor lacus placerat sem, quis egestas eros purus sit amet ipsum. Aliquam at metus et
             velit laoreet congue.
-
             Aliquam nec eros id ex lacinia aliquam. Donec volutpat libero non facilisis aliquet. Nullam ornare eu lectus
             non varius. Phasellus nec purus turpis. Fusce quis tempus sapien. Pellentesque luctus mi sit amet dui mollis
             cursus. Donec sollicitudin sit amet nulla iaculis consequat. Ut rhoncus leo sed nunc ultrices congue. Mauris
@@ -41,18 +40,15 @@
             ex. Sed tincidunt sed felis in semper. Aliquam ullamcorper aliquet turpis, sit amet consectetur odio
             tincidunt vitae. In molestie molestie nibh, vel pellentesque nisl vulputate id. Aenean tincidunt sem vitae
             luctus efficitur. Nullam egestas quam nulla, eu porttitor neque ultricies vitae.
-
             Donec in massa magna. Suspendisse elementum dui vitae dui tempus ultricies. Praesent nunc mauris, aliquam
             viverra eros vitae, egestas tincidunt augue. Donec vitae nisi nec quam varius molestie eget eu sapien.
             Pellentesque facilisis sagittis mauris, nec vulputate urna pretium non. Vivamus eget placerat elit. Praesent
             libero eros, gravida in arcu ac, sodales dapibus felis. Vivamus egestas malesuada nisi eu vulputate.
-
             Mauris ex lacus, eleifend in rutrum ac, cursus vel erat. Nullam dictum, diam quis consectetur pellentesque,
             odio turpis dapibus odio, non imperdiet lorem lectus vitae metus. Fusce non quam tempus, sagittis ligula
             eget, vulputate est. Nulla et dolor faucibus, blandit elit dignissim, facilisis erat. Vestibulum imperdiet
             fermentum diam, non scelerisque mi aliquet in. Ut a nibh eros. Duis egestas nibh vitae diam sodales, non
             luctus urna sodales. Integer a nibh sit amet leo vestibulum mattis sit amet vel est.
-
             Suspendisse facilisis hendrerit nisl eu pulvinar. Praesent ac sapien vestibulum nibh consectetur malesuada.
             Fusce ac ultricies odio. Quisque sit amet tellus quis ex sollicitudin hendrerit. Vestibulum tellus lectus,
             pellentesque vitae magna eget, ullamcorper pellentesque purus. Aliquam maximus felis vel erat finibus
@@ -61,6 +57,7 @@
             dictum, elit nec eleifend condimentum, nisi eros efficitur purus, nec rhoncus orci tellus non dolor.
         </p>
     </div>
-</article>
+</div>
+
 
 {% endblock %}
