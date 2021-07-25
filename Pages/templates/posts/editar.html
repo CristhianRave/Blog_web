@@ -33,7 +33,6 @@
             <div Class="form-categories">
                 <label class="form-label" for="categorias"><h3>Categoria nueva:</h3></label>
                 <select class="form-select" name="category">
-                    <option value=" {{category.2.id}}">----------------</option> <!-- Categoria por defecto "Otros" -->
                     {% for c in category %}
                     <option value="{{c.id}}">{{c}}</option>
                     {% endfor %}

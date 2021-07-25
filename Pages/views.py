@@ -132,4 +132,7 @@ def delete_article(request, id):
 
     article = Page.objects.get(pk=id)
     article.delete()
+    
     return redirect('/blog')
+
+

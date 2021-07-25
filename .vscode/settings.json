@@ -1,0 +1,12 @@
+{
+    "editor.cursorBlinking": "expand",
+    "editor.fontFamily": "\"JetBrains Mono\", Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": null,
+    "workbench.colorCustomizations": {
+    "[Dracula]": {
+
+        "editor.background": "#6e5d5d00",
+            
+    }
+    }
+}
